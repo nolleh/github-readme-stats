@@ -5,6 +5,8 @@ import api from "../api/index.js";
 import { calculateRank } from "../src/calculateRank.js";
 import { renderStatsCard } from "../src/cards/stats-card.js";
 import { CONSTANTS, renderError } from "../src/common/utils.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const stats = {
   name: "Anurag Hazra",
@@ -69,7 +71,7 @@ const faker = (query, data) => {
       username: "anuraghazra",
       ...query,
     },
-    headers: { Authorization: process.env.API_KEY },
+    headersDistinct: { authorization: ["Bearer " + process.env.API_KEY] },
   };
   const res = {
     setHeader: jest.fn(),
