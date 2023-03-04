@@ -46,7 +46,7 @@ describe("Test /api/pin", () => {
         username: "anuraghazra",
         repo: "convoychat",
       },
-      getHeader: (_) => process.env.API_KEY,
+      headers: { Authorization: process.env.API_KEY },
     };
     const res = {
       setHeader: jest.fn(),
@@ -76,7 +76,7 @@ describe("Test /api/pin", () => {
         bg_color: "fff",
         full_name: "1",
       },
-      getHeader: (_) => process.env.API_KEY,
+      headers: { Authorization: process.env.API_KEY },
     };
     const res = {
       setHeader: jest.fn(),
@@ -104,7 +104,7 @@ describe("Test /api/pin", () => {
         username: "anuraghazra",
         repo: "convoychat",
       },
-      getHeader: (_) => process.env.API_KEY,
+      headers: { Authorization: process.env.API_KEY },
     };
     const res = {
       setHeader: jest.fn(),
@@ -126,7 +126,7 @@ describe("Test /api/pin", () => {
         username: "anuraghazra",
         repo: "convoychat",
       },
-      getHeader: (_) => process.env.API_KEY,
+      headers: { Authorization: process.env.API_KEY },
     };
     const res = {
       setHeader: jest.fn(),

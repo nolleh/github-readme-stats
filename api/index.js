@@ -45,7 +45,7 @@ export default async (req, res) => {
     return res.send(renderError("No api key for server"));
   }
 
-  const auth = req.getHeader("Authorization");
+  const { Authorization: auth } = req.headers;
   const token = auth?.replace("Bearer ", "");
   if (process.env.API_KEY != token) {
     console.log(`token is not vaild ${token} =/= ${process.env.API_KEY}`);
