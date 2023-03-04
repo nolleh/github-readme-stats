@@ -45,10 +45,11 @@ export default async (req, res) => {
     return res.send(renderError("No api key for server"));
   }
 
+  console.log("header", req.headers);
   const { Authorization: auth } = req.headers;
   const token = auth?.replace("Bearer ", "");
   if (process.env.API_KEY != token) {
-    console.log(`token is not vaild ${token} =/= ${process.env.API_KEY}`);
+    console.log(`token is not vaild ${token}`);
     return res.send(renderError("Token is not valid"));
   }
 
