@@ -40,13 +40,13 @@ export default async (req, res) => {
 
   res.setHeader("Content-Type", "image/svg+xml");
 
-  const auth = req.get("Authorization");
   if (!process.env.API_KEY) {
     console.log("no api key for server");
     return res.send(renderError("No api key for server"));
   }
 
-  const token = auth.replace("Bearer ", "");
+  const auth = req.get("Authorization");
+  const token = auth?.replace("Bearer ", "");
   if (process.env.API_KEY != token) {
     console.log("token is not vaild");
     return res.send(renderError("Token is not valid"));
