@@ -80,7 +80,7 @@ describe("Test /api/top-langs", () => {
       query: {
         username: "anuraghazra",
       },
-      get: (_) => process.env.API_KEY,
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
@@ -105,7 +105,7 @@ describe("Test /api/top-langs", () => {
         text_color: "fff",
         bg_color: "fff",
       },
-      get: (_) => process.env.API_KEY,
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
@@ -133,7 +133,7 @@ describe("Test /api/top-langs", () => {
       query: {
         username: "anuraghazra",
       },
-      get: (_) => process.env.API_KEY,
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
