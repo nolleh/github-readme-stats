@@ -5,6 +5,9 @@ import MockAdapter from "axios-mock-adapter";
 import topLangs from "../api/top-langs.js";
 import { renderTopLanguages } from "../src/cards/top-languages-card.js";
 import { renderError } from "../src/common/utils.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const data_langs = {
   data: {
@@ -77,6 +80,7 @@ describe("Test /api/top-langs", () => {
       query: {
         username: "anuraghazra",
       },
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
@@ -101,6 +105,7 @@ describe("Test /api/top-langs", () => {
         text_color: "fff",
         bg_color: "fff",
       },
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
@@ -128,6 +133,7 @@ describe("Test /api/top-langs", () => {
       query: {
         username: "anuraghazra",
       },
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),

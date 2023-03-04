@@ -37,7 +37,20 @@ export default async (req, res) => {
     border_radius,
     border_color,
   } = req.query;
+
   res.setHeader("Content-Type", "image/svg+xml");
+
+  const auth = req.getHeader("Authorization");
+  if (!process.env.API_KEY) {
+    console.log("no api key for server");
+    return;
+  }
+
+  const token = auth.replace("Bearer ", "");
+  if (process.env.API_KEY != token) {
+    console.log("token is not vaild");
+    return;
+  }
 
   if (blacklist.includes(username)) {
     return res.send(renderError("Something went wrong"));

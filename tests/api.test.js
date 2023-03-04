@@ -69,6 +69,7 @@ const faker = (query, data) => {
       username: "anuraghazra",
       ...query,
     },
+    getHeader: (_) => process.env.API_KEY,
   };
   const res = {
     setHeader: jest.fn(),

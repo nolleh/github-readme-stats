@@ -5,6 +5,8 @@ import MockAdapter from "axios-mock-adapter";
 import pin from "../api/pin.js";
 import { renderRepoCard } from "../src/cards/repo-card.js";
 import { renderError } from "../src/common/utils.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const data_repo = {
   repository: {
@@ -44,6 +46,7 @@ describe("Test /api/pin", () => {
         username: "anuraghazra",
         repo: "convoychat",
       },
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
@@ -73,6 +76,7 @@ describe("Test /api/pin", () => {
         bg_color: "fff",
         full_name: "1",
       },
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
@@ -100,6 +104,7 @@ describe("Test /api/pin", () => {
         username: "anuraghazra",
         repo: "convoychat",
       },
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
@@ -121,6 +126,7 @@ describe("Test /api/pin", () => {
         username: "anuraghazra",
         repo: "convoychat",
       },
+      getHeader: (_) => process.env.API_KEY,
     };
     const res = {
       setHeader: jest.fn(),
@@ -131,7 +137,6 @@ describe("Test /api/pin", () => {
       .reply(200, { data: { user: null, organization: { repository: null } } });
 
     await pin(req, res);
-
     expect(res.setHeader).toBeCalledWith("Content-Type", "image/svg+xml");
     expect(res.send).toBeCalledWith(
       renderError("Organization Repository Not found"),
